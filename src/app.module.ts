@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
 import { NotificationModule } from '@app/notification';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -14,6 +17,17 @@ import { NotificationModule } from '@app/notification';
         KAVENEGAR_TEMPLATE: Joi.string().required(),
       }),
     }),
+    MongooseModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.get<string>('DB_URI'),
+        connectionFactory: (connection: any) => {
+          return connection;
+        },
+      }),
+      inject: [ConfigService],
+    }),
+    AuthModule,
+    UserModule,
   ],
 })
 export class AppModule {}

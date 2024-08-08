@@ -24,10 +24,15 @@
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.2.3",
     "@nestjs/core": "^10.0.0",
+    "@nestjs/mongoose": "^10.0.10",
     "@nestjs/platform-express": "^10.0.0",
     "axios": "^1.7.3",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
+    "libphonenumber-js": "^1.11.5",
+    "moment": "^2.30.1",
+    "mongoose": "^8.5.2",
+    "otp-generator": "^4.0.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },
@@ -76,7 +81,8 @@
     ],
     "moduleNameMapper": {
       "^@app/notification(|/.*)$": "<rootDir>/libs/notification/src/$1",
-      "^@app/jwt(|/.*)$": "<rootDir>/libs/jwt/src/$1"
+      "^@app/jwt(|/.*)$": "<rootDir>/libs/jwt/src/$1",
+      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1"
     }
   }
 }

@@ -14,6 +14,8 @@
     "@app/notification/(.*)": "<rootDir>/../libs/notification/src/$1",
     "@app/notification": "<rootDir>/../libs/notification/src",
     "@app/jwt/(.*)": "<rootDir>/../libs/jwt/src/$1",
-    "@app/jwt": "<rootDir>/../libs/jwt/src"
+    "@app/jwt": "<rootDir>/../libs/jwt/src",
+    "@app/common/(.*)": "<rootDir>/../libs/common/src/$1",
+    "@app/common": "<rootDir>/../libs/common/src"
   }
 }
