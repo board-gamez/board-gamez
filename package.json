@@ -27,6 +27,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "axios": "^1.7.3",
     "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },
@@ -74,7 +75,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/notification(|/.*)$": "<rootDir>/libs/notification/src/$1"
+      "^@app/notification(|/.*)$": "<rootDir>/libs/notification/src/$1",
+      "^@app/jwt(|/.*)$": "<rootDir>/libs/jwt/src/$1"
     }
   }
 }

@@ -1,5 +1,9 @@
 {
-  "moduleFileExtensions": ["js", "json", "ts"],
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
   "rootDir": ".",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
@@ -8,6 +12,8 @@
   },
   "moduleNameMapper": {
     "@app/notification/(.*)": "<rootDir>/../libs/notification/src/$1",
-    "@app/notification": "<rootDir>/../libs/notification/src"
+    "@app/notification": "<rootDir>/../libs/notification/src",
+    "@app/jwt/(.*)": "<rootDir>/../libs/jwt/src/$1",
+    "@app/jwt": "<rootDir>/../libs/jwt/src"
   }
 }
