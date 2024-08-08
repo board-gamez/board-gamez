@@ -1,0 +1,23 @@
+version: '3.8'
+
+name: 'board-gamez'
+
+services:
+  app:
+    container_name: 'board-gamez-app'
+    build: .
+    command: npm run start:dev
+    image: board-gamez
+    restart: always
+    ports:
+      - 3001:3001
+    env_file: './.env'
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: board-gamez-mongo
+    image: mongo:7.0
+    restart: always
+    volumes:
+      - ~/docker/board-game/mongo:/data/db
