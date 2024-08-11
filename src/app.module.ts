@@ -10,9 +10,10 @@ import { NotificationModule } from '@app/notification';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthenticationMiddleware } from './auth/authentication/middleware/authentication.middleware';
+import { AuthenticationMiddleware } from './iam/authentication/middleware/authentication.middleware';
 import { UserModelFactory } from './user/schema/user.schema';
 import { JwtModule } from '@app/jwt';
+import { IamModule } from './iam/iam.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { JwtModule } from '@app/jwt';
     NotificationModule,
     JwtModule,
     AuthModule,
+    IamModule,
     UserModule,
   ],
 })
