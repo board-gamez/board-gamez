@@ -5,6 +5,7 @@ import {
   Schema,
   SchemaFactory,
 } from '@nestjs/mongoose';
+import { Role } from 'src/iam/authorization/constant/role.constant';
 
 @Schema({
   collection: 'users',
@@ -16,6 +17,9 @@ export class User extends Core {
 
   @Prop({ trim: true, required: true, unique: true })
   phone: string;
+
+  @Prop({ type: String, enum: Role, default: Role.CUSTOMER })
+  role: Role;
 
   @Prop({ default: false })
   isVerified: boolean;
