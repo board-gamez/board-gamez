@@ -14,6 +14,7 @@ import { AuthenticationMiddleware } from './iam/authentication/middleware/authen
 import { UserModelFactory } from './user/schema/user.schema';
 import { JwtModule } from '@app/jwt';
 import { IamModule } from './iam/iam.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { IamModule } from './iam/iam.module';
     AuthModule,
     IamModule,
     UserModule,
+    CategoryModule,
   ],
 })
 export class AppModule implements NestModule {
