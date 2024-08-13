@@ -32,7 +32,7 @@ export class PermissionGuard implements CanActivate {
 
     if (!user) return false;
 
-    if ((user.role = Role.ADMIN)) return true;
+    if (user.role === Role.ADMIN) return true;
 
     return this.hasPermission(user.role, requiredPermission);
   }
