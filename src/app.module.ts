@@ -15,6 +15,7 @@ import { UserModelFactory } from './user/schema/user.schema';
 import { JwtModule } from '@app/jwt';
 import { IamModule } from './iam/iam.module';
 import { CategoryModule } from './category/category.module';
+import { PublisherModule } from './publisher/publisher.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { CategoryModule } from './category/category.module';
     IamModule,
     UserModule,
     CategoryModule,
+    PublisherModule,
   ],
 })
 export class AppModule implements NestModule {
