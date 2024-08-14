@@ -8,7 +8,10 @@ export class CategoryFilter extends FilterWrapper {
       name: 'query-filter',
       filter: (fq: any) => {
         if (input.q) {
-          fq['name'] = new RegExp(`.*${input.q}.*`, 'gi');
+          fq['$or'] = [
+            { name: new RegExp(`.*${input.q}.*`, 'gi') },
+            { slug: new RegExp(`.*${input.q}.*`, 'gi') },
+          ];
         }
       },
     });
