@@ -19,6 +19,7 @@ import { PublisherModule } from './publisher/publisher.module';
 import { DesignerModule } from './designer/designer.module';
 import { ArtistModule } from './artist/artist.module';
 import { MechanismModule } from './mechanism/mechanism.module';
+import { TypeModule } from './type/type.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { MechanismModule } from './mechanism/mechanism.module';
     AuthModule,
     IamModule,
     UserModule,
+    TypeModule,
     CategoryModule,
     PublisherModule,
     DesignerModule,

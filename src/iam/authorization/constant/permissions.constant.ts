@@ -1,6 +1,11 @@
 import { Role } from './role.constant';
 
 export const PERMISSIONS = {
+  ADD_TYPE: [Role.MANAGER, Role.ADMIN],
+  EDIT_TYPE: [Role.MANAGER, Role.ADMIN],
+  REMOVE_TYPE: [Role.ADMIN],
+  GET_TYPE: [],
+
   ADD_CATEGORY: [Role.MANAGER, Role.ADMIN],
   EDIT_CATEGORY: [Role.MANAGER, Role.ADMIN],
   REMOVE_CATEGORY: [Role.ADMIN],
