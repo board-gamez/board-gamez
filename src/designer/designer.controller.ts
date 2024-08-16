@@ -20,7 +20,7 @@ import { GetDesignerOutput } from './dto/get-designer.dto';
 export class DesignerController {
   constructor(private readonly designerService: DesignerService) {}
 
-  @Permission('ADD_PUBLISHER')
+  @Permission('ADD_DESIGNER')
   @Post()
   async addDesigner(
     @Body() input: AddDesignerInput,
@@ -28,7 +28,7 @@ export class DesignerController {
     return this.designerService.addDesigner(input);
   }
 
-  @Permission('EDIT_PUBLISHER')
+  @Permission('EDIT_DESIGNER')
   @Put(':slug')
   async editDesigner(
     @Param('slug') slug: string,
@@ -37,7 +37,7 @@ export class DesignerController {
     return this.designerService.editDesigner(slug, input);
   }
 
-  @Permission('REMOVE_PUBLISHER')
+  @Permission('REMOVE_DESIGNER')
   @Delete(':slug')
   async removeDesigner(
     @Param('slug') slug: string,

@@ -17,6 +17,7 @@ import { IamModule } from './iam/iam.module';
 import { CategoryModule } from './category/category.module';
 import { PublisherModule } from './publisher/publisher.module';
 import { DesignerModule } from './designer/designer.module';
+import { ArtistModule } from './artist/artist.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { DesignerModule } from './designer/designer.module';
     CategoryModule,
     PublisherModule,
     DesignerModule,
+    ArtistModule,
   ],
 })
 export class AppModule implements NestModule {
