@@ -18,6 +18,7 @@ import { CategoryModule } from './category/category.module';
 import { PublisherModule } from './publisher/publisher.module';
 import { DesignerModule } from './designer/designer.module';
 import { ArtistModule } from './artist/artist.module';
+import { MechanismModule } from './mechanism/mechanism.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { ArtistModule } from './artist/artist.module';
     PublisherModule,
     DesignerModule,
     ArtistModule,
+    MechanismModule,
   ],
 })
 export class AppModule implements NestModule {
