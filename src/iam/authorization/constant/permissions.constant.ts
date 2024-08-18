@@ -30,4 +30,9 @@ export const PERMISSIONS = {
   EDIT_MECHANISM: [Role.MANAGER, Role.ADMIN],
   REMOVE_MECHANISM: [Role.ADMIN],
   GET_MECHANISM: [],
+
+  ADD_GAME: [Role.MANAGER, Role.ADMIN],
+  EDIT_GAME: [Role.MANAGER, Role.ADMIN],
+  REMOVE_GAME: [Role.ADMIN],
+  GET_GAME: [],
 };

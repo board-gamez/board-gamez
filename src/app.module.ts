@@ -20,6 +20,7 @@ import { DesignerModule } from './designer/designer.module';
 import { ArtistModule } from './artist/artist.module';
 import { MechanismModule } from './mechanism/mechanism.module';
 import { TypeModule } from './type/type.module';
+import { GameModule } from './game/game.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { TypeModule } from './type/type.module';
     DesignerModule,
     ArtistModule,
     MechanismModule,
+    GameModule,
   ],
 })
 export class AppModule implements NestModule {
