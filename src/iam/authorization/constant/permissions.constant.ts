@@ -35,4 +35,9 @@ export const PERMISSIONS = {
   EDIT_GAME: [Role.MANAGER, Role.ADMIN],
   REMOVE_GAME: [Role.ADMIN],
   GET_GAME: [],
+
+  ADD_PRODUCT: [Role.MANAGER, Role.ADMIN],
+  EDIT_PRODUCT: [Role.MANAGER, Role.ADMIN],
+  REMOVE_PRODUCT: [Role.ADMIN],
+  GET_PRODUCT: [],
 };

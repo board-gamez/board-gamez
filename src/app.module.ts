@@ -21,6 +21,7 @@ import { ArtistModule } from './artist/artist.module';
 import { MechanismModule } from './mechanism/mechanism.module';
 import { TypeModule } from './type/type.module';
 import { GameModule } from './game/game.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -54,6 +55,7 @@ import { GameModule } from './game/game.module';
     ArtistModule,
     MechanismModule,
     GameModule,
+    ProductModule,
   ],
 })
 export class AppModule implements NestModule {
