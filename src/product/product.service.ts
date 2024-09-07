@@ -8,6 +8,7 @@ import { RemoveProductOutput } from './dto/remove-product.dto';
 import { GetProductOutput } from './dto/get-product.dto';
 import { GetProductsInput, GetProductsOutput } from './dto/get-products.dto';
 import { ProductFilter } from './product.filter';
+import { User } from 'src/user/schema/user.schema';
 
 @Injectable()
 export class ProductService {
@@ -16,8 +17,12 @@ export class ProductService {
     private readonly productModel: Model<ProductDocument>,
   ) {}
 
-  async addProduct(input: AddProductInput): Promise<AddProductOutput> {
+  async addProduct(
+    currentUser: User,
+    input: AddProductInput,
+  ): Promise<AddProductOutput> {
     const product = await this.productModel.create({
+      _createdBy: currentUser._id,
       ...input,
     });
 
@@ -28,11 +33,15 @@ export class ProductService {
   }
 
   async editProduct(
+    currentUser: User,
     slug: string,
     input: EditProductInput,
   ): Promise<EditProductOutput> {
     const product = await this.productModel.findOneAndUpdate(
-      { slug },
+      {
+        _createdBy: currentUser._id,
+        slug,
+      },
       { ...input },
       { new: true },
     );
@@ -45,8 +54,14 @@ export class ProductService {
     };
   }
 
-  async removeProduct(slug: string): Promise<RemoveProductOutput> {
-    const product = await this.productModel.findOneAndDelete({ slug });
+  async removeProduct(
+    currentUser: User,
+    slug: string,
+  ): Promise<RemoveProductOutput> {
+    const product = await this.productModel.findOneAndDelete({
+      _createdBy: currentUser._id,
+      slug,
+    });
 
     if (!product) throw new NotFoundException();
 

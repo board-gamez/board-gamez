@@ -9,7 +9,7 @@ export class AddProductInput {
   price: number;
   quantity: number;
   meta: Meta;
-  thumbnail: string;
+  image: string;
 }
 
 export class AddProductOutput extends CoreOutput {

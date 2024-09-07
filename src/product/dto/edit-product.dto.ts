@@ -9,7 +9,7 @@ export class EditProductInput {
   price: number;
   quantity: number;
   meta: Meta;
-  thumbnail: string;
+  image: string;
 }
 
 export class EditProductOutput extends CoreOutput {

@@ -15,6 +15,8 @@ import { Permission } from 'src/iam/authorization/decorator/permission.decorator
 import { EditProductInput, EditProductOutput } from './dto/edit-product.dto';
 import { RemoveProductOutput } from './dto/remove-product.dto';
 import { GetProductOutput } from './dto/get-product.dto';
+import { CurrentUser } from 'src/iam/authorization/decorator/current-user.decorator';
+import { User } from 'src/user/schema/user.schema';
 
 @Controller('products')
 export class ProductController {
@@ -22,25 +24,30 @@ export class ProductController {
 
   @Permission('ADD_PRODUCT')
   @Post()
-  async addProduct(@Body() input: AddProductInput): Promise<AddProductOutput> {
-    return this.productService.addProduct(input);
+  async addProduct(
+    @CurrentUser() currentUser: User,
+    @Body() input: AddProductInput,
+  ): Promise<AddProductOutput> {
+    return this.productService.addProduct(currentUser, input);
   }
 
   @Permission('EDIT_PRODUCT')
   @Put(':slug')
   async editProduct(
+    @CurrentUser() currentUser: User,
     @Param('slug') slug: string,
     @Body() input: EditProductInput,
   ): Promise<EditProductOutput> {
-    return this.productService.editProduct(slug, input);
+    return this.productService.editProduct(currentUser, slug, input);
   }
 
   @Permission('REMOVE_PRODUCT')
   @Delete(':slug')
   async removeProduct(
+    @CurrentUser() currentUser: User,
     @Param('slug') slug: string,
   ): Promise<RemoveProductOutput> {
-    return this.productService.removeProduct(slug);
+    return this.productService.removeProduct(currentUser, slug);
   }
 
   @Get(':slug')

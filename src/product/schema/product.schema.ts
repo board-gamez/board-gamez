@@ -6,13 +6,18 @@ import {
   Schema,
   SchemaFactory,
 } from '@nestjs/mongoose';
+import { Types } from 'mongoose';
 import * as MongooseSlugPlugin from 'mongoose-slug-plugin';
+import { User } from 'src/user/schema/user.schema';
 
 @Schema({
   collection: 'products',
   timestamps: true,
 })
 export class Product extends Core {
+  @Prop({ type: Types.ObjectId, ref: User.name, required: true })
+  _createdBy: Types.ObjectId | User;
+
   @Prop({ trim: true, required: true })
   title: string;
 
@@ -32,7 +37,7 @@ export class Product extends Core {
   meta: Meta;
 
   @Prop()
-  thumbnail: string;
+  image: string;
 }
 
 export type ProductDocument = Product & Document;
