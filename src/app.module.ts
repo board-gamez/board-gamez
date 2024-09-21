@@ -22,6 +22,8 @@ import { MechanismModule } from './mechanism/mechanism.module';
 import { TypeModule } from './type/type.module';
 import { GameModule } from './game/game.module';
 import { ProductModule } from './product/product.module';
+import { OrderModule } from './order/order.module';
+import { OrderModelFactory } from './order/schema/order.schema';
 
 @Module({
   imports: [
@@ -31,6 +33,9 @@ import { ProductModule } from './product/product.module';
         PORT: Joi.number().required(),
         KAVENEGAR_API_KEY: Joi.string().required(),
         KAVENEGAR_TEMPLATE: Joi.string().required(),
+        ZIBAL_MERCHANT_ID: Joi.string().required(),
+        ZIBAL_CALLBACK: Joi.string().required(),
+        PAYMENT_REDIRECT_URL: Joi.string().required(),
       }),
     }),
     MongooseModule.forRootAsync({
@@ -42,7 +47,7 @@ import { ProductModule } from './product/product.module';
       }),
       inject: [ConfigService],
     }),
-    MongooseModule.forFeatureAsync([UserModelFactory]),
+    MongooseModule.forFeatureAsync([UserModelFactory, OrderModelFactory]),
     NotificationModule,
     JwtModule,
     AuthModule,
@@ -56,6 +61,7 @@ import { ProductModule } from './product/product.module';
     MechanismModule,
     GameModule,
     ProductModule,
+    OrderModule,
   ],
 })
 export class AppModule implements NestModule {
