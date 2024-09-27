@@ -37,7 +37,7 @@ export class Product extends Core {
   meta: Meta;
 
   @Prop()
-  image: string;
+  imageKey: string;
 }
 
 export type ProductDocument = Product & Document;

@@ -36,6 +36,7 @@ export class FileService {
           Bucket: this.bucketName,
           Key: key,
           Body: file.buffer,
+          ACL: 'public-read',
         }),
       );
 
