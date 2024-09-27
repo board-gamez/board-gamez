@@ -40,4 +40,7 @@ export const PERMISSIONS = {
   EDIT_PRODUCT: [Role.MANAGER, Role.ADMIN],
   REMOVE_PRODUCT: [Role.ADMIN],
   GET_PRODUCT: [],
+
+  UPLOAD_FILE: [Role.MANAGER, Role.ADMIN],
+  GET_FILE: [],
 };

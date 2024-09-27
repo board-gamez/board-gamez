@@ -24,6 +24,7 @@ import { GameModule } from './game/game.module';
 import { ProductModule } from './product/product.module';
 import { OrderModule } from './order/order.module';
 import { OrderModelFactory } from './order/schema/order.schema';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -36,6 +37,10 @@ import { OrderModelFactory } from './order/schema/order.schema';
         ZIBAL_MERCHANT_ID: Joi.string().required(),
         ZIBAL_CALLBACK: Joi.string().required(),
         PAYMENT_REDIRECT_URL: Joi.string().required(),
+        S3_ENDPOINT: Joi.string().required(),
+        S3_ACCESS_KEY: Joi.string().required(),
+        S3_SECRET_KEY: Joi.string().required(),
+        S3_BUCKET: Joi.string().required(),
       }),
     }),
     MongooseModule.forRootAsync({
@@ -62,6 +67,7 @@ import { OrderModelFactory } from './order/schema/order.schema';
     GameModule,
     ProductModule,
     OrderModule,
+    FileModule,
   ],
 })
 export class AppModule implements NestModule {
