@@ -17,6 +17,10 @@ import { RemoveProductOutput } from './dto/remove-product.dto';
 import { GetProductOutput } from './dto/get-product.dto';
 import { CurrentUser } from 'src/iam/authorization/decorator/current-user.decorator';
 import { User } from 'src/user/schema/user.schema';
+import {
+  GetMultipleProductsInput,
+  GetMultipleProductsOutput,
+} from './dto/get-multiple-products.dto';
 
 @Controller('products')
 export class ProductController {
@@ -53,6 +57,13 @@ export class ProductController {
   @Get(':slug')
   async getProduct(@Param('slug') slug: string): Promise<GetProductOutput> {
     return this.productService.getProduct(slug);
+  }
+
+  @Get('multiple')
+  async getMultipleProducts(
+    @Query() input: GetMultipleProductsInput,
+  ): Promise<GetMultipleProductsOutput> {
+    return this.productService.getMultipleProducts(input);
   }
 
   @Get()

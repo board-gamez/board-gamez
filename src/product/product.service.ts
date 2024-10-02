@@ -9,6 +9,10 @@ import { GetProductOutput } from './dto/get-product.dto';
 import { GetProductsInput, GetProductsOutput } from './dto/get-products.dto';
 import { ProductFilter } from './product.filter';
 import { User } from 'src/user/schema/user.schema';
+import {
+  GetMultipleProductsInput,
+  GetMultipleProductsOutput,
+} from './dto/get-multiple-products.dto';
 
 @Injectable()
 export class ProductService {
@@ -79,6 +83,19 @@ export class ProductService {
     return {
       message: 'product was found successfully',
       product,
+    };
+  }
+
+  async getMultipleProducts(
+    input: GetMultipleProductsInput,
+  ): Promise<GetMultipleProductsOutput> {
+    const products = await this.productModel.find({
+      _id: { $in: input._products },
+    });
+
+    return {
+      message: 'products was found successfully',
+      products,
     };
   }
 
