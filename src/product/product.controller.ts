@@ -54,16 +54,16 @@ export class ProductController {
     return this.productService.removeProduct(currentUser, slug);
   }
 
-  @Get(':slug')
-  async getProduct(@Param('slug') slug: string): Promise<GetProductOutput> {
-    return this.productService.getProduct(slug);
-  }
-
   @Get('multiple')
   async getMultipleProducts(
     @Query() input: GetMultipleProductsInput,
   ): Promise<GetMultipleProductsOutput> {
     return this.productService.getMultipleProducts(input);
+  }
+
+  @Get(':slug')
+  async getProduct(@Param('slug') slug: string): Promise<GetProductOutput> {
+    return this.productService.getProduct(slug);
   }
 
   @Get()
