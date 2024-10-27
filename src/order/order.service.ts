@@ -13,6 +13,8 @@ import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { User } from 'src/user/schema/user.schema';
 import { ConfirmOrderInput } from './dto/callback-order.dto';
+import { GetOrdersInput, GetOrdersOutput } from './dto/get-orders.dto';
+import { OrderFilter } from './order.filter';
 
 @Injectable()
 export class OrderService {
@@ -79,6 +81,33 @@ export class OrderService {
       message: 'order added successfully',
       paymentUrl: `https://gateway.zibal.ir/start/${resp.data.trackId}`,
       order,
+    };
+  }
+
+  async getOrders(
+    currentUser: User,
+    input: GetOrdersInput,
+  ): Promise<GetOrdersOutput> {
+    const filters = new OrderFilter(input);
+
+    const orders = await this.orderModel.find(
+      {
+        _createdBy: currentUser._id,
+        ...filters.getFilterQuery(),
+      },
+      {},
+      filters.getQueryOptions(),
+    );
+
+    const totalCount = await this.orderModel.countDocuments({
+      _createdBy: currentUser._id,
+      ...filters.getFilterQuery(),
+    });
+
+    return {
+      message: 'orders was found successfully',
+      pagination: { page: input.page, totalCount },
+      orders,
     };
   }
 

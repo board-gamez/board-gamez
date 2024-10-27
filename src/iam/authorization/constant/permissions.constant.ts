@@ -43,4 +43,7 @@ export const PERMISSIONS = {
 
   UPLOAD_FILE: [Role.MANAGER, Role.ADMIN],
   GET_FILE: [],
+
+  ADD_ORDER: [Role.CUSTOMER, Role.MANAGER, Role.ADMIN],
+  GET_ORDER: [Role.CUSTOMER, Role.MANAGER, Role.ADMIN],
 };
