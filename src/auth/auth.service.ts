@@ -15,6 +15,10 @@ import * as otpGenerator from 'otp-generator';
 import * as moment from 'moment';
 import { ConfigService } from '@nestjs/config';
 import { VerifyCodeInput, VerifyCodeOutput } from './dto/verify-code.dto';
+import {
+  EditCurrentUserInput,
+  EditCurrentUserOutput,
+} from './dto/edit-current-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -100,6 +104,24 @@ export class AuthService {
     return {
       message: 'user authenticated successfully',
       token: await this.jwtService.sign(7, user._id.toString()),
+      user,
+    };
+  }
+
+  async editCurrentUser(
+    currentUser: User,
+    input: EditCurrentUserInput,
+  ): Promise<EditCurrentUserOutput> {
+    const user = await this.userModel.findById(currentUser._id);
+
+    if (!user) throw new NotFoundException('user not found');
+
+    user.name = input.name;
+
+    await user.save();
+
+    return {
+      message: 'current user edited successfully',
       user,
     };
   }

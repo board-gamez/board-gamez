@@ -46,4 +46,6 @@ export const PERMISSIONS = {
 
   ADD_ORDER: [Role.CUSTOMER, Role.MANAGER, Role.ADMIN],
   GET_ORDER: [Role.CUSTOMER, Role.MANAGER, Role.ADMIN],
+
+  EDIT_CURRENT_USER: [Role.CUSTOMER, Role.MANAGER, Role.ADMIN],
 };
